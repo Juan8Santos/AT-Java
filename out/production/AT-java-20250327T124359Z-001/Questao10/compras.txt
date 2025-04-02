@@ -1,1 +1,3 @@
-Teste
+Produto: arroz | Quantidade: 3 | Preço: R$23.0
+Produto: feijão | Quantidade: 1 | Preço: R$12.0
+Produto: peixe | Quantidade: 2 | Preço: R$66.0

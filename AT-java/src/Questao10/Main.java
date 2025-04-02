@@ -8,37 +8,42 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) throws IOException {
 
-        System.out.println("====== Registro de compras  ======");
+        System.out.println("====== Registro de compras ======");
         System.out.println("* Registre 3 compras com nome, quantidade e preço. ");
 
         Scanner scanner = new Scanner(System.in);
-        short contadorWhile = 0;
-        String texto = "";
+        short contadorWhile = 1;
+        StringBuilder texto = new StringBuilder();
 
-        Path path = Path.of("C:\\Users\\juan.santos\\IdeaProjects\\AT-Java\\AT-java\\src\\Questao10\\compras.txt");
+        Path path = Path.of("AT-java/src/Questao10/compras.txt");
 
         if(Files.notExists(path)){
             Files.createFile(path);
         }
 
-        while(contadorWhile < 3) {
+        while(contadorWhile <= 3) {
+
+            System.out.println("=================================");
+            System.out.printf("* Cadastre o %dº produto.\n",contadorWhile);
 
             System.out.println("Digite o nome do produto.");
             String nomeProduto = scanner.nextLine();
 
             System.out.println("Digite a quantidade da compra.");
-            String quantidadeProduto = scanner.nextLine();
+            int quantidadeProduto = scanner.nextInt();
+            scanner.nextLine();
 
             System.out.println("Digite o preço unitário do produto.");
-            String precoProduto = scanner.nextLine();
+            double precoProduto = scanner.nextDouble();
+            scanner.nextLine();
 
-            texto = nomeProduto + " | " + quantidadeProduto + " | " + precoProduto;
+            texto.append("Produto: ").append(nomeProduto).append(" | Quantidade: ").append(quantidadeProduto).append(" | Preço: R$").append(precoProduto).append("\n");
             contadorWhile++;
         }
 
-
-
         Files.writeString(path, texto);
+
+        System.out.println("====== Lista de produtos ======");
 
         for (String linhas : Files.readAllLines(path)) {
             System.out.println(linhas);
